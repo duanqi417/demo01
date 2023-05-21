@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+        namespace:名称空间
+        resultType:返回结果类型
+        id：SQL的唯一标识
+-->
+<mapper namespace="com.duan.mapper.CourseMapper">
+    <insert id="insertAll">
+        insert
+        into s_course(name,hours,schools)
+        values (#{name},#{hours},#{schools});
+    </insert>
+
+    <update id="updateByHours" >
+        update s_course
+        set hours = #{hours}
+        where id = #{id};
+    </update>
+
+    <select id="selectById" resultType="com.duan.pojo.Course">
+        select * from s_course where id = #{id};
+    </select>
+
+    <select id="selectAllBySchool" resultType="com.duan.pojo.Course">
+        select * from s_course where schools = #{schools};
+    </select>
+    <select id="selectAll" resultType="com.duan.pojo.Course">
+        select *
+        from s_course;
+
+    </select>
+</mapper>
